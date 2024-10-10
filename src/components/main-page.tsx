@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { ErrorBadge } from "./error-badge";
 
 export const MainPage: React.FC<{
@@ -6,17 +6,14 @@ export const MainPage: React.FC<{
   setHandlingAutofix: (show: boolean) => void;
   setShowCancelScreen: (show: boolean) => void;
 }> = ({ handleAutofix, setHandlingAutofix, setShowCancelScreen }) => {
-  const [countdown, setCountdown] = useState(5);
+  const [countdown, setCountdown] = useState(4);
 
   useEffect(() => {
-    console.log("Countdown started");
-    setCountdown(5);
-
     const timer = setInterval(() => {
       setCountdown((prev) => {
         if (prev <= 0) {
           clearInterval(timer);
-          setHandlingAutofix(false);
+          setTimeout(() => setHandlingAutofix(true), 0);
           return 0;
         }
         return prev - 1;
@@ -36,7 +33,7 @@ export const MainPage: React.FC<{
         <div
           className="absolute left-0 top-0 bottom-0 bg-[#4A59CD]"
           style={{
-            width: `${((5 - countdown) / 5) * 100}%`,
+            width: `${((4 - countdown) / 4) * 100}%`,
             transition: "width 1s linear",
           }}
         ></div>
