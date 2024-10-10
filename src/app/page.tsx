@@ -15,9 +15,6 @@ export default function Home() {
     setHandlingAutofix(true);
   };
 
-  // Remove this early return as it's redundant with the conditional rendering below
-  // if (handlingAutofix) return null;
-
   return (
     <div className="flex flex-col items-center justify-center h-screen">
       <GithubLink />
